@@ -3,6 +3,7 @@ package com.javastudio.tutorial.testing.service;
 import com.javastudio.tutorial.testing.api.Engine;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -18,11 +19,13 @@ class TruckTest {
     @Mock
     Engine mockEngine;
 
+    @InjectMocks
+    Truck truck;
+
     @Test
     void truckStartingWithMockEngine() {
         logger.info("Testing truck starting");
         when(mockEngine.isStart()).thenReturn(true);
-        Truck truck = new Truck(mockEngine);
         assertTrue(truck.isStart());
     }
 }
